@@ -1,0 +1,68 @@
+{
+  "project": {
+    "pz": {
+      "agg": {
+        "signupForNewsletter": {
+          "inputs": [
+            {
+              "dim": "enablementqstringsignal"
+            }
+          ]
+        },
+        "signupdanishnewsletter": {
+          "inputs": [
+            {
+              "dim": "danishperson"
+            },
+            {
+              "dim": "enablementqstringsignal"
+            }
+          ]
+        }
+      },
+      "sig": {
+        "enablementqstringsignal": {
+          "str": 15,
+          "cap": 100,
+          "dur": "p",
+          "crit": {
+            "op": "&",
+            "type": "G",
+            "clauses": [
+              {
+                "type": "QS",
+                "match": {
+                  "cs": false,
+                  "op": "=",
+                  "rhs": "enablement"
+                },
+                "queryName": "utm"
+              }
+            ]
+          }
+        },
+        "danishperson": {
+          "str": 50,
+          "cap": 100,
+          "dur": "p",
+          "crit": {
+            "op": "&",
+            "type": "G",
+            "clauses": [
+              {
+                "key": "cf-country",
+                "type": "QK",
+                "match": {
+                  "cs": false,
+                  "op": "=",
+                  "rhs": "DK"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "test": {}
+  }
+}
